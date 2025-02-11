@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.idus_exam.order.OrderDto;
 import org.junit.jupiter.api.Order;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +36,17 @@ public class MemberDto {
                         .build();
 
         }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class MemberOrderListResponse{
+        private String name;
+
+        List<OrderDto.OrderResponse> orders = new ArrayList<>();
+
     }
 
 
