@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Order;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -22,7 +23,6 @@ public class MemberDto {
 
 
         public Member toEntity(String encodedPassword, String type) {
-            if(type.equals("USER")) {
                 return Member.builder()
                         .name(name)
                         .nickName(nickName)
@@ -32,17 +32,6 @@ public class MemberDto {
                         .gender(gender)
                         .role("USER")
                         .build();
-            } else {
-                return Member.builder()
-                        .name(name)
-                        .nickName(nickName)
-                        .password(encodedPassword)
-                        .phoneNum(phoneNum)
-                        .email(email)
-                        .gender(gender)
-                        .role("INSTRUCTOR")
-                        .build();
-            }
 
         }
     }
@@ -89,6 +78,7 @@ public class MemberDto {
         private String email;
         private String gender;
 
+
         public static MemberResponse from(Member member) {
             return MemberResponse.builder()
                     .name(member.getName())
@@ -100,4 +90,6 @@ public class MemberDto {
                     .build();
         }
     }
+
+
 }
