@@ -44,18 +44,10 @@ public class OrderDto {
                     .paymentDate(order.getPaymentDate())
                     .build();
         }
+    }
 
-        // 엔티티 리스트를 DTO 리스트로 변환하고 응답 객체 생성
-        public static MemberDto.MemberOrderListResponse toResponse(List<Order> orders, String memberName) {
-            List<OrderResponse> orderResponses = orders.stream()
-                    .map(OrderResponse::from)
-                    .collect(Collectors.toList());
-
-            return MemberDto.MemberOrderListResponse.builder()
-                    .name(memberName)
-                    .orders(orderResponses)
-                    .build();
-        }
+    public static List<OrderResponse> OrderListResponse(List<Order> orders) {
+        return orders.stream().map(OrderResponse::from).collect(Collectors.toList());
     }
 }
 

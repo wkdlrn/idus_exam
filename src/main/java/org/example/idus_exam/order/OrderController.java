@@ -18,14 +18,12 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @GetMapping("/{memberIdx}")
-    public ResponseEntity<MemberDto.MemberOrderListResponse> getOrdersByMember(@PathVariable Long memberIdx) {
-        List<Order> orders = orderService.getOrdersByMember(memberIdx);
-        String memberName = orderService.getMemberName(memberIdx);
-
-        // DTO 메서드를 호출하여 변환 및 응답 생성
-        return ResponseEntity.ok(OrderDto.OrderResponse.toResponse(orders, memberName));
+    @GetMapping("/member/{memberIdx}")
+    public ResponseEntity<List<OrderDto.OrderResponse>> getOrdersByMemberIdx(@PathVariable Long memberIdx) {
+        List<OrderDto.OrderResponse> orders = orderService.findOrdersByMemberIdx(memberIdx);
+        return ResponseEntity.ok(orders);
     }
 }
+
 
 

@@ -42,17 +42,6 @@ public class MemberDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
-    public static class MemberOrderListResponse {
-        private String name;
-        private List<OrderDto.OrderResponse> orders;
-    }
-
-
-
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
     public static class MemberPageResponse {
         private int page;
         private int size;
