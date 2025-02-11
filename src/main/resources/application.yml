@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${MAIL_ADDR}
-    password: ${MAIL_PASSWORD}
+    username: 2071514@hansung.ac.kr
+    password: pavyitlhipqtmbel
     properties:
       mail:
         smtp:
@@ -15,15 +15,15 @@ spring:
 
   datasource:
     master:
-      jdbc-url: ${MASTER_DB_URL}
+      jdbc-url: jdbc:mariadb://192.168.201.29:3306/idus_exam
       driver-class-name: org.mariadb.jdbc.Driver
-      username: ${DB_USER}
-      password: ${DB_PASSWORD}
+      username: kjg
+      password: qwer1234
     slave:
-      jdbc-url: ${SLAVE_DB_URL}
+      jdbc-url: jdbc:mariadb://192.168.201.30:3306/idus_exam
       driver-class-name: org.mariadb.jdbc.Driver
-      username: ${DB_USER}
-      password: ${DB_PASSWORD}
+      username: kjg
+      password: qwer1234
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
@@ -36,3 +36,4 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.type.descriptor.sql: trace

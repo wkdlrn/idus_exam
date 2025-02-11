@@ -1,0 +1,47 @@
+package org.example.idus_exam.member;
+
+import org.example.idus_exam.member.model.MemberDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/member")
+public class MemberController {
+    private final MemberService memberService;
+
+    @GetMapping("/verify")
+    public void verify(String uuid) {
+        memberService.verify(uuid);
+    }
+
+    @PostMapping("/signup")
+    public void signup(@RequestBody MemberDto.SignupRequest dto) {
+        memberService.signup(dto);
+    }
+
+    @PostMapping("/instructor/signup")
+    public void instructorSignup(@RequestBody MemberDto.SignupRequest dto) {
+        memberService.instructorSignup(dto);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<MemberDto.MemberPageResponse> list(int page, int size) {
+        MemberDto.MemberPageResponse response = memberService.list(page, size);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{courseIdx}")
+    public ResponseEntity<MemberDto.MemberResponse> read(@PathVariable Long memberIdx) {
+        MemberDto.MemberResponse response = memberService.read(memberIdx);
+
+        return ResponseEntity.ok(response);
+    }
+
+
+
+}
