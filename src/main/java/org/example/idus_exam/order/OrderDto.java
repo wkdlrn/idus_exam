@@ -12,22 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderDto {
-
-    @Getter
-    public static class OrderRegister {
-        private Long orderIdx;
-        private String productName;
-        private LocalDateTime paymentDate;
-
-        public Order toEntity(Member member) {
-            return Order.builder()
-                    .productName(productName)
-                    .paymentDate(paymentDate)
-                    .member(member)
-                    .build();
-        }
-    }
-
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
