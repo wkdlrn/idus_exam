@@ -18,8 +18,7 @@ public class OrderService {
 
     @Transactional(readOnly = true)
     public List<OrderDto.OrderResponse> findOrdersByMemberIdx(Long memberIdx) {
-        Member member = memberRepository.findById(memberIdx)
-                .orElseThrow(() -> new IllegalArgumentException("회원이 존재하지 않습니다."));
+        Member member = memberRepository.findById(memberIdx).orElseThrow();
         List<Order> orders = orderRepository.findByMember(member);
         return OrderDto.OrderListResponse(orders);
     }
