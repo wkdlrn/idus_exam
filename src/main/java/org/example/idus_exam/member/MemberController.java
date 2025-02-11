@@ -23,11 +23,6 @@ public class MemberController {
         memberService.signup(dto);
     }
 
-    @PostMapping("/instructor/signup")
-    public void instructorSignup(@RequestBody MemberDto.SignupRequest dto) {
-        memberService.instructorSignup(dto);
-    }
-
     @GetMapping("/list")
     public ResponseEntity<MemberDto.MemberPageResponse> list(int page, int size) {
         MemberDto.MemberPageResponse response = memberService.list(page, size);
@@ -35,7 +30,7 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/{courseIdx}")
+    @GetMapping("/{memberIdx}")
     public ResponseEntity<MemberDto.MemberResponse> read(@PathVariable Long memberIdx) {
         MemberDto.MemberResponse response = memberService.read(memberIdx);
 
