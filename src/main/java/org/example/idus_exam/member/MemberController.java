@@ -2,6 +2,8 @@ package org.example.idus_exam.member;
 
 import org.example.idus_exam.member.model.MemberDto;
 import lombok.RequiredArgsConstructor;
+import org.example.idus_exam.order.OrderDto;
+import org.example.idus_exam.order.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RequestMapping("/member")
 public class MemberController {
     private final MemberService memberService;
+    private final OrderService orderService;
 
     @GetMapping("/verify")
     public void verify(String uuid) {
@@ -36,7 +39,6 @@ public class MemberController {
 
         return ResponseEntity.ok(response);
     }
-
 
 
 }

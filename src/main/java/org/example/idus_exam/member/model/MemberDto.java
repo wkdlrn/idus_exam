@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.junit.jupiter.api.Order;
+import org.example.idus_exam.order.OrderDto;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ public class MemberDto {
         private String phoneNum;
         private String email;
         private String gender;
+
 
 
 
@@ -35,7 +37,6 @@ public class MemberDto {
 
         }
     }
-
 
     @Getter
     @NoArgsConstructor

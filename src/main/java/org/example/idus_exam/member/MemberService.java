@@ -44,7 +44,6 @@ public class MemberService implements UserDetailsService {
         Optional<Member> result = memberRepository.findByEmail(username);
 
         if (result.isPresent()) {
-            // 7번 로직
             Member member = result.get();
             return member;
         }

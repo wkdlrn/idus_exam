@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.example.idus_exam.member.model.Member;
 
 import java.time.LocalDateTime;
-
+@Table(name = "orders")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

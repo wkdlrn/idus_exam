@@ -33,6 +33,7 @@ public class Member implements UserDetails {
 
     private String role;
     private boolean enabled;
+
     @OneToMany(mappedBy = "member")
     private List<EmailVerify> emailVerifyList = new ArrayList<>();
 
