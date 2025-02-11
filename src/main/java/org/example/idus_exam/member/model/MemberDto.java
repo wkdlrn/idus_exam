@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.idus_exam.order.OrderDto;
-import org.junit.jupiter.api.Order;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class MemberDto {
         private String phoneNum;
         private String email;
         private String gender;
+
 
 
 
@@ -42,12 +42,11 @@ public class MemberDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
-    public static class MemberOrderListResponse{
+    public static class MemberOrderListResponse {
         private String name;
-
-        List<OrderDto.OrderResponse> orders = new ArrayList<>();
-
+        private List<OrderDto.OrderResponse> orders;
     }
+
 
 
     @Getter
