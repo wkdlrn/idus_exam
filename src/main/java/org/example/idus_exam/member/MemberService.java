@@ -13,7 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -28,16 +30,9 @@ public class MemberService implements UserDetailsService {
 
         Member member = memberRepository.save(dto.toEntity(encodedPassword, "USER"));
 
-        emailVerifyService.signup(member.getIdx(), member.getEmail());
+//        emailVerifyService.signup(member.getIdx(), member.getEmail());
 
     }
-    @Transactional
-    public void instructorSignup(MemberDto.SignupRequest dto) {
-        String encodedPassword = passwordEncoder.encode(dto.getPassword());
-
-        memberRepository.save(dto.toEntity(encodedPassword, "INSTRUCTOR"));
-    }
-
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -70,6 +65,16 @@ public class MemberService implements UserDetailsService {
     public MemberDto.MemberResponse read(Long memberIdx) {
         Member member = memberRepository.findById(memberIdx).orElseThrow();
         return MemberDto.MemberResponse.from(member);
+    }
+
+//    public MemberDto.MemberResponse searchByName(String name) {
+//        Member member = (Member) memberRepository.findByName(name).orElseThrow();
+//        return MemberDto.MemberResponse.from(member);
+//    }
+
+    public List<MemberDto.MemberResponse> searchByName(String name) {
+        List<Member> members = memberRepository.findByNameContaining(name);
+        return members.stream().map(MemberDto.MemberResponse::from).collect(Collectors.toList());
     }
 
 }
