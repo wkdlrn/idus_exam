@@ -42,12 +42,17 @@ public class MemberController {
 
 
 
-    @GetMapping("/contain")
+    @GetMapping("/search/name")
     public ResponseEntity<List<MemberDto.MemberResponse>> searchByName(@RequestParam String name) {
         List<MemberDto.MemberResponse> response = memberService.searchByName(name);
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/search/email")
+    public ResponseEntity<List<MemberDto.MemberResponse>> searchByEmail(@RequestParam String email) {
+        List<MemberDto.MemberResponse> response = memberService.searchByEmail(email);
+        return ResponseEntity.ok(response);
+    }
 
 
 }

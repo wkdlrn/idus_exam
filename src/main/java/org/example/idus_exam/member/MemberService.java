@@ -72,4 +72,9 @@ public class MemberService implements UserDetailsService {
         return members.stream().map(MemberDto.MemberResponse::from).collect(Collectors.toList());
     }
 
+    public List<MemberDto.MemberResponse> searchByEmail(String email) {
+        List<Member> members = memberRepository.findByEmailContaining(email);
+        return members.stream().map(MemberDto.MemberResponse::from).collect(Collectors.toList());
+    }
+
 }
