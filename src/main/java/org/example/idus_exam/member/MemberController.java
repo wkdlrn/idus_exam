@@ -41,4 +41,13 @@ public class MemberController {
     }
 
 
+
+    @GetMapping("/contain")
+    public ResponseEntity<List<MemberDto.MemberResponse>> searchByName(@RequestParam String name) {
+        List<MemberDto.MemberResponse> response = memberService.searchByName(name);
+        return ResponseEntity.ok(response);
+    }
+
+
+
 }
