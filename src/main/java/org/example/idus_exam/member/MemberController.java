@@ -33,13 +33,6 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
-//    @GetMapping("/search")
-//    public ResponseEntity<MemberDto.MemberResponse> search(@RequestParam String name) {
-//        MemberDto.MemberResponse response = memberService.searchByName(name);
-//
-//        return ResponseEntity.ok(response);
-//    }
-
     @GetMapping("/{memberIdx}")
     public ResponseEntity<MemberDto.MemberResponse> read(@PathVariable Long memberIdx) {
         MemberDto.MemberResponse response = memberService.read(memberIdx);
@@ -47,12 +40,7 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
-//    @GetMapping("/contain")
-//    public ResponseEntity<MemberDto.MemberResponse> searchByName(@RequestParam String name) {
-//        MemberDto.MemberResponse response = memberService.searchByName(name);
-//
-//        return ResponseEntity.ok(response);
-//    }
+
 
     @GetMapping("/contain")
     public ResponseEntity<List<MemberDto.MemberResponse>> searchByName(@RequestParam String name) {
